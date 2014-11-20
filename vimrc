@@ -13,6 +13,9 @@
 " come first or last, like Pathogen and sourcing the machine-local config.
 " Instead, add it to one of the files in .vim/init, or create a new one.
 
+scriptencoding utf-8
+set encoding=utf-8
+
 set nocompatible
 
 execute pathogen#infect()
