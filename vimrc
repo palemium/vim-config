@@ -3,6 +3,8 @@ set encoding=utf-8
 
 set nocompatible
 
+execute pathogen#infect()
+
 syntax off
 filetype off
 
