@@ -13,10 +13,9 @@ hi LineNr term=NONE
 
 set path=,,**
 
-inoremap jk <Esc>
-
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set autoindent
-set listchars=eol:$,trail:-
+set listchars=eol:$,trail:-,tab:>-
+set dictionary+=/usr/share/dict/words
