@@ -1,3 +1,4 @@
+alias topdu='du -ah . | sort -rh | head -20'
 alias simplewebserver='while true; do echo -e "HTTP/1.1 200 OK\n\n $(date)" | nc -l localhost $PORT; done'
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias dp='rlwrap perl -de1'
