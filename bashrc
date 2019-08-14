@@ -1,7 +1,10 @@
 alias topdu='du -ah . | sort -rh | head -20'
-alias simplewebserver='while true; do echo -e "HTTP/1.1 200 OK\n\n $(date)" | nc -l localhost $PORT; done'
+read -d '' perlwebserver <<'EOF'
+perl -Mojo -MJSON -E 'a(any '**' => sub { $c = shift; a->log->fatal(to_json({ url => "${\\$c->req->url}", headers => { %{ $c->req->headers->{headers} } }, body => $c->req->body, method => $c->req->method })); $c->render(text => time) })->start' daemon
+EOF
+alias sws="$perlwebserver"
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
-alias dp='rlwrap perl -de1'
+alias dp='rlwrap dotenv perl -de1'
 alias ovpn='sudo openvpn --config'
 alias nodejs='node'
 alias gst='git status'
@@ -18,6 +21,7 @@ if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
 
-
-
 export PATH="/usr/local/opt/python/libexec/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export HELM_TLS_ENABLE="true"
+export TILLER_NAMESPACE="default-deploy"
